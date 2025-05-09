@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>便捷复制</title>
+    <link rel="stylesheet" href="//unpkg.com/element-plus/dist/index.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="//unpkg.com/element-plus"></script>
+    <style>
+      .item-name {
+        cursor: pointer;
+        font-size: 36px;
+        font-weight: bold;
+        line-height: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div v-for="(item, index) in list" :key="index">
+        <div class="item">
+          <div class="item-name" @click="handleCopy(item)">{{ item }}</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue
+      const { ElMessage } = ElementPlus
+
+      const app = createApp({
+        setup() {
+          const list = [
+            'vip666',
+            'vip777',
+            'vip888',
+            'yd666',
+            'yd777',
+            'yd888',
+            'yddy666',
+            'ydgzh666',
+            'wbfl666'
+          ]
+          const handleCopy = item => {
+            const el = document.createElement('textarea')
+            el.value = item
+            document.body.appendChild(el)
+            el.select()
+            document.execCommand('copy')
+            document.body.removeChild(el)
+            ElMessage({
+              message: '复制成功',
+              type: 'success'
+            })
+          }
+          return {
+            list,
+            handleCopy
+          }
+        }
+      })
+      app.use(ElementPlus)
+      app.mount('#app')
+    </script>
+  </body>
+</html>
