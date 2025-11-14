@@ -14,24 +14,24 @@
         margin: 0;
         padding: 0;
       }
-      .item-name {
-        font-size: 36px;
-        font-weight: bold;
-        line-height: 2;
+      .con {
+        padding: 30px 0;
       }
-      .item-name span {
-        cursor: pointer;
+      .item-name {
+        padding: 0 50px;
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 48px;
         color: #409eff;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
     <div id="app">
-      <div v-for="(item, index) in list" :key="index">
-        <div class="item">
-          <div class="item-name">
-            <span @click="handleCopy(item)">{{ item }}</span>
-          </div>
+      <div class="con">
+        <div v-for="(item, index) in list" :key="index" class="item-name" @click="handleCopy(item)">
+          {{ item }}
         </div>
       </div>
     </div>
@@ -43,15 +43,23 @@
       const app = createApp({
         setup() {
           const list = [
-            'vip666',
-            'vip777',
-            'vip888',
-            'yd666',
-            'yd777',
-            'yd888',
-            'yddy666',
-            'ydgzh666',
-            'wbfl666'
+            'XLFD888',
+            'XLFD777',
+            'XLFD666',
+            '百炼和小李飞刀联动了',
+            '挺有意思快来玩',
+            'BLYX888',
+            'BLYX777',
+            'BLYX666',
+            'APPFL888',
+            'APPFL777',
+            'APPFL666',
+            'BLTV999',
+            'BLTV777',
+            'BLTV555',
+            'VIP888',
+            'VIP777',
+            'VIP666'
           ]
           const handleCopy = item => {
             const el = document.createElement('textarea')
